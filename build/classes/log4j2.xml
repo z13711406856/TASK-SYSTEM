@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+ <Appenders>
+  <Console name="STDOUT" target="SYSTEM_OUT">
+   <PatternLayout pattern="%d [%-5p] %l - %m%n" />
+  </Console>
+  <File name="File" fileName="my.log">
+   <PatternLayout pattern="%d [%-5p] %l - %m%n" />
+  </File>
+  <RollingFile name="RollingFile" fileName="${web:rootDir}/app.log"
+
+   filePattern="${web:rootDir}/$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log.gz">
+   <PatternLayout pattern="%d [%-5p] %l - %m%n" />
+   <Policies>
+    <TimeBasedTriggeringPolicy />
+    <SizeBasedTriggeringPolicy size="20 MB" />
+   </Policies>
+   <DefaultRolloverStrategy max="20" />
+  </RollingFile>
+ </Appenders>
+ <Loggers>
+  <Root level="Info">
+   <AppenderRef ref="STDOUT" />
+  </Root>
+ </Loggers>
+ <Loggers>
+  <Logger name="com.boz.ExceptionLog" level="INFO" additivity="true">-
+   <AppenderRef ref="RollingFile" />
+   <AppenderRef ref="STDOUT" />
+  </Logger>
+ </Loggers>
+</Configuration>
+
