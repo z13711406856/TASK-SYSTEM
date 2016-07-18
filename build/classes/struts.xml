@@ -7,10 +7,12 @@
     <constant name="struts.action.extension" value="do"/>  
     <package name="default" namespace="/" extends="struts-default">
     	<global-results>
+    		<!-- 当指向这个结果时，会通过Action链调用ExceptionLog这个Action -->
             <result name="Exception" type="chain">ExceptionLog</result>
         </global-results>
  
         <global-exception-mappings>
+        	<!-- 定义了一个异常映射，当产生java.lang.Exception异常时调用Exception结果(global-results的) -->
             <exception-mapping exception="java.lang.Exception" result="Exception"/>
         </global-exception-mappings>
         <action name="ExceptionLog" class="com.boz.ExceptionLog">

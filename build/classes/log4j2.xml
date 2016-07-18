@@ -7,7 +7,7 @@
   <File name="File" fileName="my.log">
    <PatternLayout pattern="%d [%-5p] %l - %m%n" />
   </File>
-  <RollingFile name="RollingFile" fileName="${web:rootDir}/app.log"
+  <RollingFile name="RollingFile" fileName="${sys:user.dir}/app.log"
 
    filePattern="${web:rootDir}/$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log.gz">
    <PatternLayout pattern="%d [%-5p] %l - %m%n" />

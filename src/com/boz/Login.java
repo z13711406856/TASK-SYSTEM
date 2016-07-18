@@ -26,7 +26,7 @@ public class Login extends ActionSupport implements SessionAware, RequestAware,
 		if(account.equals("boz")&&password.equals("11111")){
 			session.put("boz", "123");
 		}
-		throw new Exception();
+		throw new Exception("Exception Test");
 		/*return Action.SUCCESS;*/
 	}
 	/* (non-Javadoc)
